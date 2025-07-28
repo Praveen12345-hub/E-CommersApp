@@ -9,7 +9,7 @@ Users can register either as a *Seller* or *Buyer*, and manage their accounts ac
 
 ![HomePage](Screenshot/Mainpage.png)
 ## * Seller Page
-![seller](Screenshot/seller1.png)
+![seller](Screenshot/Screenshot/seller1.png)
 ![seller](Screenshot/seller2.png)
 ![seller](Screenshot/seller3.png)
 ![seller](Screenshot/seller4.png)

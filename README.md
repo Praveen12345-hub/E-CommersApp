@@ -10,14 +10,14 @@ Users can register either as a *Seller* or *Buyer*, and manage their accounts ac
 ![HomePage](Screenshot/Mainpage.png)
 ## * Seller Page
 ![seller](Screenshot/Screenshot/seller1.png)
-![seller](Screenshot/seller2.png)
-![seller](Screenshot/seller3.png)
-![seller](Screenshot/seller4.png)
-![seller](Screenshot/seller5.png)
-![seller](Screenshot/seller6.png)
-![seller](Screenshot/seller7.png)
-![seller](Screenshot/seller8.png)
-![seller](Screenshot/seller9.png)
+![seller](Screenshot/Screenshot/seller2.png)
+![seller](Screenshot/Screenshot/seller3.png)
+![seller](Screenshot/Screenshot/seller4.png)
+![seller](Screenshot/Screenshot/seller5.png)
+![seller](Screenshot/Screenshot/seller6.png)
+![seller](Screenshot/Screenshot/seller7.png)
+![seller](Screenshot/Screenshot/seller8.png)
+![seller](Screenshot/Screenshot/seller9.png)
 
 ## * Buyer Page
 ![Buyer](Screenshot/buyer.png)

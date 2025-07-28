@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Orders - E-Commerce Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">E-Commerce Platform</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/seller/dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/seller/products/add">Add Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/seller/orders">Orders</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/seller/profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <form th:action="@{/logout}" method="post">
+                            <button type="submit" class="btn btn-link nav-link">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container mt-4">
+        <div th:if="${message}" class="alert alert-success" th:text="${message}"></div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h4>Order Management</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Product</th>
+                                <th>Buyer</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Order Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="order : ${orders}">
+                                <td th:text="${order.id}"></td>
+                                <td th:text="${order.product.name}"></td>
+                                <td th:text="${order.buyer.firstName + ' ' + order.buyer.lastName}"></td>
+                                <td th:text="${order.quantity}"></td>
+                                <td th:text="${'$' + #numbers.formatDecimal(order.totalPrice, 1, 2)}"></td>
+                                <td th:text="${order.status}"></td>
+                                <td th:text="${#dates.format(order.orderDate, 'yyyy-MM-dd')}"></td>
+                                <td>
+                                    <form th:action="@{/seller/orders/update-status/{id}(id=${order.id})}" method="post">
+                                        <select name="status" class="form-select form-select-sm" onchange="this.form.submit()">
+                                            <option value="PENDING" th:selected="${order.status == 'PENDING'}">Pending</option>
+                                            <option value="PROCESSING" th:selected="${order.status == 'PROCESSING'}">Processing</option>
+                                            <option value="SHIPPED" th:selected="${order.status == 'SHIPPED'}">Shipped</option>
+                                            <option value="DELIVERED" th:selected="${order.status == 'DELIVERED'}">Delivered</option>
+                                            <option value="CANCELLED" th:selected="${order.status == 'CANCELLED'}">Cancelled</option>
+                                        </select>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mt-3">
+                    <a href="/seller/dashboard" class="btn btn-secondary">Back to Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
